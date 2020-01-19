@@ -50,9 +50,9 @@ function defaultSketch(color) {
 }
 
 function changeColor() {
-  this.style.backgroundColor = "black";
+  this.style.backgroundColor = "#006868";
 }
 
 function revertColor() {
-	this.style.backgroundColor = '#8fd8d2';
+	this.style.backgroundColor = '#f97800';
 }
