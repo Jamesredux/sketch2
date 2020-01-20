@@ -7,6 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+window.onload = init;
+
+function init() {
+	const resetButton = document.getElementById('resetButton');
+	const randomButton = document.getElementById('randomButton');
+	const jazzyButton = document.getElementById('jazzyButton');
+	
+	console.log(resetButton)
+resetButton.addEventListener('click', resetGrid);
+randomButton.addEventListener('click', randomColors);
+
+//jazzyButton.addEventListener('click', jazzyStyle);
+}
+
+
 function drawGrid(numSquare) {
 	clearContainer
 	
@@ -49,10 +65,68 @@ function defaultSketch(color) {
 	// body...
 }
 
-function changeColor() {
+function changeColor(newColor) {
+
   this.style.backgroundColor = "#006868";
 }
 
 function revertColor() {
 	this.style.backgroundColor = '#f97800';
 }
+
+// reset function
+
+function resetGrid() {
+	let requestNumber = prompt("How many squares do you want? Choose from 1-64", "32");
+	numSquare = requestNumber;
+	if (isNaN(numSquare)) {
+		alert("Please input a real number.");
+		resetGrid();
+	}
+	else if (numSquare <1 || numSquare > 64) {
+		alert("I SAID CHOOSE A NUMBER BETWEEN  1-64")
+		resetGrid();
+	}
+	else {
+		clearGrid();
+		drawGrid(numSquare);
+	}
+	
+}
+
+function clearGrid() {
+	const oldSquares = document.querySelectorAll('.square').forEach(sq => {
+		sq.parentNode.removeChild(sq);
+	});
+}
+
+//random colors function
+
+function randomColors() {
+	console.log("randomColors")
+	const squares = document.querySelectorAll('.square').forEach(sq => {
+		sq.removeEventListener("mouseenter", changeColor);
+		sq.addEventListener('mouseenter', changeColorRandom);
+		
+	});
+
+}
+
+function changeColorRandom() {
+	let ranColor = getRandomColor();
+	this.style.backgroundColor = ranColor;
+	
+}
+
+function getRandomColor() {
+	let digits = ['0','1','2','3','4','5','6','7','8',
+	'9','A', 'B', 'C', 'D', 'E', 'F'],
+	 ranColor = '#', i;
+	for (i=0; i < 6; i++)  {
+		ranColor = ranColor += digits[Math.floor(Math.random() * 16)];
+	}
+	return ranColor;
+}
+
+// end of random
+
