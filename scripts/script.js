@@ -14,12 +14,13 @@ function init() {
 	const resetButton = document.getElementById('resetButton');
 	const randomButton = document.getElementById('randomButton');
 	const jazzyButton = document.getElementById('jazzyButton');
+	const resizeButton = document.getElementById('resizeButton');
 	
-	console.log(resetButton)
-resetButton.addEventListener('click', resetGrid);
-randomButton.addEventListener('click', randomColors);
 
-//jazzyButton.addEventListener('click', jazzyStyle);
+	resetButton.addEventListener('click', resetGrid);
+	randomButton.addEventListener('click', randomColors);
+	jazzyButton.addEventListener('click', jazzyStyle);
+	resizeButton.addEventListener('click', resizeGrid);
 }
 
 
@@ -34,12 +35,10 @@ function drawGrid(numSquare) {
   	for (i = 1; i <= numSquare * numSquare; i++)  {
   		let newSquare = document.createElement('div');
   		newSquare.className = 'square';
-  		//newSquare.setAttribute('style', 'height: squareSize; width: 18px');
   		newSquare.style.height = squareSize;
   		newSquare.style.width = squareSize;
   		newSquare.addEventListener('mouseenter', changeColor);
-  		//newSquare.addEventListener('mouseleave', revertColor)
-  		//add above as option for snake	
+
   		container.appendChild(newSquare);
 			}
 	}
@@ -54,29 +53,19 @@ function clearContainer() {
 
 }
 
-function defaultSketch(color) {
-	let drawColor = color
-	const square = document.querySelectorAll('.square')
-	square.addEventListener('mouseenter', () => {
-		square.style.backgroundColor = "#fff";
-	})
-	// add event listener to square class
-	// change color on mouse enter and remove on mouse leaeve
-	// body...
-}
 
 function changeColor(newColor) {
 
-  this.style.backgroundColor = "#006868";
+  this.style.backgroundColor = "#DC7877";
 }
 
 function revertColor() {
 	this.style.backgroundColor = '#f97800';
 }
 
-// reset function
+// resize function
 
-function resetGrid() {
+function resizeGrid() {
 	let requestNumber = prompt("How many squares do you want? Choose from 1-64", "32");
 	numSquare = requestNumber;
 	if (isNaN(numSquare)) {
@@ -103,7 +92,9 @@ function clearGrid() {
 //random colors function
 
 function randomColors() {
-	console.log("randomColors")
+		//clearGrid();
+		//drawGrid(32);
+	
 	const squares = document.querySelectorAll('.square').forEach(sq => {
 		sq.removeEventListener("mouseenter", changeColor);
 		sq.addEventListener('mouseenter', changeColorRandom);
@@ -130,3 +121,30 @@ function getRandomColor() {
 
 // end of random
 
+
+// transparent
+
+function jazzyStyle() {
+	clearGrid();
+	drawGrid(32);
+	let box = document.querySelector('.container');
+	box.className += " jazz";
+	const squares = document.querySelectorAll('.square').forEach(sq => {
+		sq.removeEventListener("mouseenter", changeColor);
+		sq.addEventListener('mouseenter', changeTransparent);
+		
+});
+}
+
+
+function changeTransparent()  {
+	this.style.backgroundColor = "transparent";
+	console.log("transparent")
+}
+
+//reset 
+
+function resetGrid() {
+	clearGrid();
+	drawGrid(32);
+}

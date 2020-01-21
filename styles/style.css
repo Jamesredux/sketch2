@@ -8,17 +8,23 @@ margin-bottom: 30px;
 	font-size: 2em;
 	
 	margin: auto;
-	color: #4e2400;
+	color: #3C4B48;
 	
+}
+
+.wrapper {
+	position: fixed;
+	left: 25%;
 }
 
 
 .container  {
+
 	clear: both;
 	height: 600px;
 	width:  600px;
-	background-color: #f97800;
-	border:  0;
+	background-color: #9AB5AE;
+	border:  5px solid grey;
 	/*margin: 30px auto;*/
 	display: inline-block;
 	
@@ -28,27 +34,30 @@ margin-bottom: 30px;
 
 body  {
 	line-height: 0;
-	background-color: #79966D;
+	background-color: #F9E2DE;
 }
 
 
 .buttons {
-	width: 25%;
-	float: left;
-	clear: both;
-	display: block;
+	padding-top: 10px;
+	padding-left: 10px;
+	/*width: 25%;  */
+	/*float: left;*/
+	/* clear: both; */
+	/* display: block; */
 }
 
 
 button  {
-	height: 65px;
-	width:  150px;
+	height: 50px;
+	width:  120px;
 	border-radius: 5%;
-	background-color: #d69c00;
-	font-size: 1.5em;
-	color: #4e2400;
+	background-color: #A5BDB7;
+	font-size: 1.2em;
+	color: #3C4B48;
 	margin: 5px;
-	box-shadow: 2px 2px 2px black;
+  box-shadow: 1px 1px 1px black;
+
 }
 
 .square  {
@@ -56,8 +65,21 @@ button  {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	background-color: #f97800;
+	background-color: #9AB5AE;
 	/*display: inline-block;  */ 
 	float: left;  
 
+}
+
+
+
+.jazz {
+	clear: both;
+	height: 600px;
+	width:  600px;
+	
+	border:  0;
+	
+	display: inline-block;
+	background-image: url('../assets/jazz.jpg');
 }
