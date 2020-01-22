@@ -3,12 +3,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 	drawGrid(32);
+	init();
 }, false);
 
 
 
 
-window.onload = init;
+
 
 function init() {
 	const resetButton = document.getElementById('resetButton');
@@ -25,12 +26,10 @@ function init() {
 
 
 function drawGrid(numSquare) {
-	clearContainer
+	//clearContainer
 	
 	let squareSize = 600/numSquare + 'px';
-	console.log(squareSize);
   const container = document.querySelector('.container');
-
 
   	for (i = 1; i <= numSquare * numSquare; i++)  {
   		let newSquare = document.createElement('div');
@@ -44,14 +43,7 @@ function drawGrid(numSquare) {
 	}
 
 
-function clearContainer() {
-	const divGroup = document.querySelectorAll('.square');
 
-	divGroup.forEach(div => {
-		div.classList.remove('.square');
-	} );
-
-}
 
 
 function changeColor(newColor) {
@@ -59,9 +51,6 @@ function changeColor(newColor) {
   this.style.backgroundColor = "#DC7877";
 }
 
-function revertColor() {
-	this.style.backgroundColor = '#f97800';
-}
 
 // resize function
 
@@ -92,15 +81,13 @@ function clearGrid() {
 //random colors function
 
 function randomColors() {
-		//clearGrid();
-		//drawGrid(32);
+		resizeGrid();
 	
 	const squares = document.querySelectorAll('.square').forEach(sq => {
 		sq.removeEventListener("mouseenter", changeColor);
 		sq.addEventListener('mouseenter', changeColorRandom);
 		
 	});
-
 }
 
 function changeColorRandom() {
@@ -139,7 +126,6 @@ function jazzyStyle() {
 
 function changeTransparent()  {
 	this.style.backgroundColor = "transparent";
-	console.log("transparent")
 }
 
 //reset 
